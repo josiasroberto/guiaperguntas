@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/',(req,res)=>{
-  Pergunta.findAll({raw:true}).then((perguntas)=>{
+  Pergunta.findAll({raw:true, order:[['id','desc']]}).then((perguntas)=>{
     res.render('./index', {perguntas:perguntas})
     
   })
@@ -38,6 +38,19 @@ app.post('/salvarpergunta',(req,res)=>{
     res.redirect('/')
   })
   
+})
+
+app.get('/pergunta/:id',(req,res)=>{
+  Pergunta.findOne({
+    where:
+    {id:req.params.id}
+  }).then((pergunta)=>{
+    if(pergunta){
+      res.render('./pergunta',{pergunta:pergunta})
+    }else{
+      res.redirect('/')
+    }
+  })
 })
 
 
