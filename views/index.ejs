@@ -5,28 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
   <title>Guia Perguntas</title>
 </head>
 <body>
   
-  <img src="/img/nodejs.png" alt="Logo" width="30" height="24">
-  <h1>Guia perguntas!</h1>
-  <hr>
-  <h3>Lista de perguntas</h3>
+<h1>Estilo do bootstrap</h1>
 
-  <p>Nome: <%= nome %></p>
-  <p>Linguagem: <%= lang %></p>
   
-  <% if(empresa){ %>
-    <p>Empresa: <%= empresa %></p>
-  <% }else{ %>
-    <p>Nenhuma empresa registrada</p>
-  <% } %>
-  
-  <% produtos.forEach((produto)=>{ %></p>
-    <hr>
-    <h3>Nome: <%= produto.nome %></h3>
-    <h4>Preço: <%= produto.preco %></h4>
-  <% }) %>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
 </html>
