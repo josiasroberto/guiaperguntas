@@ -12,6 +12,6 @@ const Pergunta = connection.define('perguntas',{
   }
 })
 
-Pergunta.sync({force:false}).then(()=>{console.log('Tabela Criada')})
+Pergunta.sync({force:false})
 
 module.exports = Pergunta

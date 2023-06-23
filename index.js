@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const connection = require('./database/database')
 const Pergunta  = require('./database/Pergunta')
+const Resposta  = require('./database/Resposta')
 
 //database
 connection.authenticate().then(()=>{
@@ -46,14 +47,29 @@ app.get('/pergunta/:id',(req,res)=>{
     {id:req.params.id}
   }).then((pergunta)=>{
     if(pergunta){
-      res.render('./pergunta',{pergunta:pergunta})
+
+      Resposta.findAll({
+        where:{perguntaId: pergunta.id},
+        order:[['id','desc']]
+      }).then((respostas)=>{
+        res.render('./pergunta',{pergunta:pergunta, respostas:respostas})
+      })
+
     }else{
       res.redirect('/')
     }
   })
 })
 
-
+app.post('/responder',(req,res)=>{
+  let perguntaId = req.body.pergunta
+  Resposta.create({
+    corpo: req.body.corpo,
+    perguntaId: perguntaId
+  }).then(()=>{
+    res.redirect('/pergunta/'+perguntaId)
+  })
+})
 
 const PORT = 8081
 app.listen(PORT, ()=>{
